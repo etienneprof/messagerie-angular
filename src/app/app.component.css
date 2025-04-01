@@ -1,0 +1,13 @@
+.content {
+    height: calc(100vh - 66.5px);
+}
+
+.messagerie app-messages-list {
+    flex: 20 1 auto;
+    max-height: 60%;
+}
+
+.messagerie app-messages-form {
+    flex: 1 1 auto;
+}
+
