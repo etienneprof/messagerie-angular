@@ -1,12 +1,4 @@
 <div>
-    <app-messages-item></app-messages-item>
-    <app-messages-item></app-messages-item>
-    <app-messages-item></app-messages-item>
-    <app-messages-item></app-messages-item>
-    <app-messages-item></app-messages-item>
-    <app-messages-item></app-messages-item>
-    <app-messages-item></app-messages-item>
-    <app-messages-item></app-messages-item>
-    <app-messages-item></app-messages-item>
-    <app-messages-item></app-messages-item>
+    <p *ngIf="messages.length == 0">Il n'y a aucun message. Soyez le premier !</p>
+    <app-messages-item *ngFor="let msg of messages"></app-messages-item>
 </div>

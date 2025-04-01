@@ -1,6 +1,5 @@
 <h4>Utilisateur·ice·s</h4>
 <ul>
-    <li>Etienne</li>
-    <li>Antoine</li>
-    <li>Francois</li>
+    <li *ngIf="users.length == 0">Aucun·e utilisateur·ice</li>
+    <li *ngFor="let user of users">{{ user.name }}</li>
 </ul>
