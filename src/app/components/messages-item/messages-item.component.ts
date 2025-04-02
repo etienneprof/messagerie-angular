@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Message } from '../../interface/message';
 
 @Component({
   selector: 'app-messages-item',
@@ -8,9 +9,6 @@ import { Component } from '@angular/core';
   styleUrl: './messages-item.component.css'
 })
 export class MessagesItemComponent {
-  message = {
-    author: "Etienne",
-    date: new Date(),
-    content: "C'est supercalifragilistiquexpialidocious... !"
-  };
+  @Input()
+  message ?: Message;
 }
