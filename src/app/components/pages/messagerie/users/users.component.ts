@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { UtilisateurService } from '../../services/utilisateur.service';
+import { UtilisateurService } from '../../../../services/utilisateur.service';
+import { User } from '../../../../interface/user';
+
 
 @Component({
   selector: 'app-users',
@@ -9,7 +11,7 @@ import { UtilisateurService } from '../../services/utilisateur.service';
   styleUrl: './users.component.css'
 })
 export class UsersComponent {
-  users : string[];
+  users : User[];
 
   constructor(private service: UtilisateurService) {
     this.users = service.getUtilisateurs();

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { MessagesItemComponent } from '../messages-item/messages-item.component';
+import { MessagesItemComponent } from './messages-item/messages-item.component';
 import { CommonModule } from '@angular/common';
-import { MessageService } from '../../services/message.service';
-import { Message } from '../../interface/message';
+import { MessageService } from '../../../../services/message.service';
+import { Message } from '../../../../interface/message';
 
 @Component({
   selector: 'app-messages-list',
