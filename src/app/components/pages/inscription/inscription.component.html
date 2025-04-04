@@ -1,13 +1,16 @@
 <div class="card">
-    <div>
+    <form [formGroup]="formulaire_inscription" (submit)="inscrire()">
         <div>
             <label for="username">Username</label>
-            <input type="text" id="username" [(ngModel)]="username">
+            <input type="text" id="username" name="username" formControlName="username">
+            <span *ngIf="display_error('username', 'required')"> Champ requis</span>
         </div>
         <div>
             <label for="password">Password</label>
-            <input type="password" [(ngModel)]="password" id="password">
+            <input type="password" id="password" name="password" formControlName="password">
+            <span *ngIf="display_error('password', 'required')"> Champ requis</span>
+            <span *ngIf="display_error('password', 'minlength')"> Le mot de passe doit faire au moins 8 caractères</span>
         </div>
-        <button class="btn btn-primary" (click)="inscrire()">Inscription</button>
-    </div>
+        <button class="btn btn-primary" (click)="inscrire()" [disabled]="!formulaire_inscription.valid">Inscription</button>
+    </form>
 </div>
