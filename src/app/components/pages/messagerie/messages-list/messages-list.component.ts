@@ -14,8 +14,10 @@ export class MessagesListComponent {
   messages : Message[] = [];
 
   constructor(private service: MessageService) {
-    service.get_messages().subscribe(response => {
-      this.messages = response;
-    });
+    setInterval(() => {
+      service.get_messages().subscribe(response => {
+        this.messages = response;
+      });
+    }, 800);
   }
 }
