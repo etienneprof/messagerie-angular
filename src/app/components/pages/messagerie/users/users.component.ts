@@ -11,9 +11,11 @@ import { User } from '../../../../interface/user';
   styleUrl: './users.component.css'
 })
 export class UsersComponent {
-  users : User[];
+  users : string[] = [];
 
   constructor(private service: UtilisateurService) {
-    this.users = service.getUtilisateurs();
+   service.get_utilisateurs().subscribe(response => {
+    this.users = response;
+   });
   }
 }

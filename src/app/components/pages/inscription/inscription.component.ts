@@ -19,10 +19,11 @@ export class InscriptionComponent {
   ) {}
 
   inscrire() {
-    this.service.addUtilisateur({
+    this.service.add_utilisateur({
       "username": this.username,
       "password": this.password
+    }).subscribe(response => {
+      this.router.navigate(["/connexion"]);
     });
-    this.router.navigate(["/connexion"]);
   }
 }

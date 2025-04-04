@@ -20,14 +20,17 @@ export class ConnexionComponent {
   ) {}
 
   connecter() {
-    if (this.service.checkUser({
+    this.service.check_user({
       "username" : this.username,
       "password" : this.password
-    })) {
-      sessionStorage.setItem("user", this.username);
-      this.router.navigate(["/messagerie"]);
-    } else {
-      this.message = "Identifiant ou mot de passe incorrect !";
-    }
+    }).subscribe({
+      next: response => {
+        sessionStorage.setItem("user", this.username);
+        this.router.navigate(["/messagerie"]);
+      },
+      error: err => {
+        this.message = err.error;
+      }
+    });
   }
 }

@@ -11,9 +11,11 @@ import { Message } from '../../../../interface/message';
   styleUrl: './messages-list.component.css'
 })
 export class MessagesListComponent {
-  messages : Message[];
+  messages : Message[] = [];
 
   constructor(private service: MessageService) {
-    this.messages = service.getMessages();
+    service.get_messages().subscribe(response => {
+      this.messages = response;
+    });
   }
 }

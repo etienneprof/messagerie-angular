@@ -1,32 +1,30 @@
 import { Injectable } from '@angular/core';
 import { User } from '../interface/user';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UtilisateurService {
-  private utilisateurs : User[] = [];
+  private BASE_URL = "http://10.133.14.60/";
 
-  constructor() { }
+  constructor(private client: HttpClient) { }
 
-  getUtilisateurs() {
-    return this.utilisateurs;
+  get_utilisateurs() {
+    return this.client.get<string[]>(this.BASE_URL + "users");
   }
 
   /**
    * Ajoute un utilisateur à condition que le username ne soit pas déjà présent dans la liste
    * @param utilisateur L'utilisateur à ajouter.
    */
-  addUtilisateur(utilisateur: User) {
-    if (!this.utilisateurs.some(u => u.username == utilisateur.username)) {
-      this.utilisateurs.push(utilisateur);
-    }
+  add_utilisateur(utilisateur: User) {
+    const headers = new HttpHeaders({'Content-Type' : 'application/json'});
+    return this.client.post<User>(this.BASE_URL + "users", utilisateur, {headers});
   }
 
-  checkUser(utilisateur: User) {
-    return this.utilisateurs.some(u => 
-      u.username == utilisateur.username
-      && u.password == utilisateur.password
-    );
+  check_user(utilisateur: User) {
+    const headers = new HttpHeaders({'Content-Type' : 'application/json'});
+    return this.client.post<User>(this.BASE_URL + "check-user", utilisateur, {headers});
   }
 }

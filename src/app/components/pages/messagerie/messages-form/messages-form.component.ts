@@ -12,16 +12,15 @@ import { UtilisateurService } from '../../../../services/utilisateur.service';
 export class MessagesFormComponent {
   content: string = "";
 
-  constructor(private message_service: MessageService, private utilisateur_service: UtilisateurService) {}
+  constructor(private message_service: MessageService) {}
 
   enregistrer() {
     let username = sessionStorage.getItem("user");
     if (username) {
-      this.message_service.addMessage({
+      this.message_service.add_message({
         "author": username,
-        "date": new Date(),
         "content": this.content
-      });
+      }).subscribe();
       this.content = "";
     }
   }
